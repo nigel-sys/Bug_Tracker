@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Bug
 
 # Create your views here.
-def home(request):
-    return render(request, 'home/index.html')
+
+
+class BugsListView(ListView):
+    model = Bug
+    context_object_name = "Bugs_list"
