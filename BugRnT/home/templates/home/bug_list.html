@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Priority</th>
+        <th scope="col">State</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for bug in Bugs_list %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{bug.name}}</td>
+        <td>{{bug.desc}}</td>
+        <td>{{bug.priority}}</td>
+        <td>{{bug.status}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
