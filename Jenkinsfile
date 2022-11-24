@@ -8,7 +8,7 @@ pipeline{
     stages{
          stage('Git Checkout'){
             steps {
-                git branch: 'main', credentialsId: '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', url: 'https://github.com/nigel-sys/Bug_Tracker.git'
+                git branch: 'main', credentialsId: '', url: 'https://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@github.com/nigel-sys/Bug_Tracker.git'
             }
         }
         stage('Terraform Init'){
