@@ -1,13 +1,21 @@
 pipeline{
     agent any
     stages{
-        stage('Test'){
+        stage('Git Checkout'){
             steps {
-<<<<<<< HEAD
-                echo 'Hello World ...'
-=======
                 git branch: 'main', credentialsId: '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', url: 'https://github.com/nigel-sys/Bug_Tracker.git'
->>>>>>> b23637e (Update Jenkins)
+            }
+        }
+        stage('Terraform Init'){
+            steps{
+                sh label: '',script: 'terraform init'
+            }
+        }
+        
+        stage('Terraform apply'){
+            steps{
+                echo "Terraform action from the parameter is --->${action}"
+                sh label: '',script: 'terraform ${action} --auto-approve'
             }
         }
     }
