@@ -6,12 +6,6 @@ pipeline{
     }
     
     stages{
-        stage('Git Checkout'){
-            steps {
-                git branch: 'main', credentialsId: '', url: 'https://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@github.com/nigel-sys/Bug_Tracker.git'
-            }
-        }
-        
         stage('Terraform Init'){
             steps{
                 sh label: '',script: 'terraform init'
