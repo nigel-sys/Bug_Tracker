@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage('Git Checkout'){
             steps {
-                git branch: 'main', credentialsId: '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', url: 'https://github.com/nigel-sys/Bug_Tracker.git'
+                git branch: 'main', credentialsId: '', url: 'https://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@github.com/nigel-sys/Bug_Tracker.git'
             }
         }
         
