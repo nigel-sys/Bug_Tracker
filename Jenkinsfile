@@ -2,13 +2,13 @@ pipeline{
     agent any
     
     tools {
-        terraform 'terraform-1008'
+        terraform 'Devops_terraform'
     }
     
     stages{
          stage('Git Checkout'){
             steps {
-                git branch: 'main', credentialsId: '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', url: 'https://github.com/nigel-sys/Bug_Tracker.git'
+                git branch: 'main', credentialsId: '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', url: 'https://github.com/nishantpani55/Bug_Tracker.git'
             }
         }
         stage('Terraform Init'){
