@@ -16,6 +16,7 @@ provider "aws" {
 resource "aws_instance" "app_server" {
   ami           = "ami-096800910c1b781ba"
   instance_type = "t2.micro"
+  security_groups = ["sg-0677433e497d008b7"]
 
   tags = {
     Name = "ExampleAppServerInstance"
