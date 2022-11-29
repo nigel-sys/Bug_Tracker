@@ -12,19 +12,19 @@ class Bug(models.Model):
     desc = models.TextField()
 
     PRIORITY_CHOICES = (
-        ('l', 'Low'),
-        ('m', 'Medium'),
-        ('h', 'High')
+        ('Low', 'Low'),
+        ('Medium', 'Medium'),
+        ('High', 'High')
     )
 
-    priority = models.CharField(max_length=1, choices=PRIORITY_CHOICES)
+    priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES)
 
-    STATUS_CHOICES = (('o', 'Open'),
-                      ('w', 'Work in Progress'),
-                      ('f', 'Fixed'))
+    STATUS_CHOICES = (('Open', 'Open'),
+                      ('Work in Progress', 'Work in Progress'),
+                      ('Fixed', 'Fixed'))
 
     status = models.CharField(
-        max_length=1, choices=STATUS_CHOICES, default='o')
+        max_length=20, choices=STATUS_CHOICES, default='Open')
 
     def __str__(self):
         return f'{self.id} ({self.name})'
