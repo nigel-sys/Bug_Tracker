@@ -13,13 +13,13 @@ pipeline{
         }
         stage('Terraform Init'){
             steps{
-                sh 'Terraform init'
+                sh 'terraform init'
             }
         }
         
         stage('Terraform apply'){
             steps{
-                sh 'Terraform apply --auto-approve'
+                sh 'terraform apply --auto-approve'
             }
         }
     }
