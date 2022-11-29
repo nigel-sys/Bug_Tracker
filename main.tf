@@ -6,16 +6,18 @@ terraform {
     }
   }
 
-provider "aws" {
-  region = "eu-west-1"
+  required_version = ">= 1.2.0"
 }
 
-resource "aws_instance" "AWS-instance" {
-  count 	= 1 
+provider "aws" {
+  region  = "eu-west-1"
+}
+
+resource "aws_instance" "app_server" {
   ami           = "ami-096800910c1b781ba"
   instance_type = "t2.micro"
-  tags = {
-    Name = "Node1"
-  }
 
+  tags = {
+    Name = "ExampleAppServerInstance"
+  }
 }
