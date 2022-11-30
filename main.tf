@@ -19,7 +19,7 @@ resource "tls_private_key" "AWS-instance" {
 }
 
 resource "aws_key_pair" "generated_key" {
-  key_name   = "21179158"
+  key_name   = "team15"
   public_key = tls_private_key.AWS-instance.public_key_openssh
 }
 
@@ -27,6 +27,7 @@ resource "aws_instance" "AWS-instance" {
   count = 1 
   ami = "ami-096800910c1b781ba"
   instance_type = "t2.micro"
+  key_name      = aws_key_pair.generated_key.key_name
   tags = {
     Name = "Team15"
   }
