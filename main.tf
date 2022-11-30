@@ -13,6 +13,16 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+resource "tls_private_key" "AWS-instance" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "aws_key_pair" "generated_key" {
+  key_name   = "21179158"
+  public_key = tls_private_key.AWS-instance.public_key_openssh
+}
+
 resource "aws_instance" "AWS-instance" {
   count = 1 
   ami = "ami-096800910c1b781ba"
@@ -20,8 +30,4 @@ resource "aws_instance" "AWS-instance" {
   tags = {
     Name = "Team15"
   }
-}
-
-resource "aws_key_pair" "AWS-instance" {
-  key_name   = "x21179158"
 }
