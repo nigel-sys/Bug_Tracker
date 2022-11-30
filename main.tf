@@ -16,8 +16,11 @@ provider "aws" {
 resource "aws_instance" "AWS-instance" {
   count = 1 
   ami = "ami-096800910c1b781ba"
-  key_name = "x21179158"
   instance_type = "t2.micro"
   tags = {
     Name = "Team15"
   }
+
+resource "aws_key_pair" "AWS-instance" {
+  key_name   = "x21179158"
+}
