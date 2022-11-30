@@ -47,7 +47,17 @@ provisioner "remote-exec" {
   }
 }
 
-resource "aws_security_group" "example" {
+resource "tls_private_key" "AWS-instance" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "aws_key_pair" "generated_key" {
+  key_name   = "example_key_pair"
+  public_key = "${tls_private_key.AWS-instance.public_key_openssh}"
+}
+
+resource "aws_security_group" "AWS-instance" {
   name        = "grant ssh"
   description = "grant ssh"
 
@@ -72,4 +82,5 @@ resource "aws_security_group" "example" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
 }
