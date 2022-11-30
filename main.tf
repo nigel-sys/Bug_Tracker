@@ -19,5 +19,5 @@ resource "aws_instance" "AWS-instance" {
   key_name = "x21179158"
   instance_type = "t2.micro"
   tags = {
-    Name = "Node1"
+    Name = "Team15"
   }
