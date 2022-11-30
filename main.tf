@@ -20,6 +20,7 @@ resource "aws_instance" "AWS-instance" {
   tags = {
     Name = "Team15"
   }
+}
 
 resource "aws_key_pair" "AWS-instance" {
   key_name   = "x21179158"
