@@ -27,8 +27,49 @@ resource "aws_instance" "AWS-instance" {
   count = 1 
   ami = "ami-096800910c1b781ba"
   instance_type = "t2.micro"
-  key_name      = aws_key_pair.generated_key.key_name
+  key_name = aws_key_pair.generated_key.key_name
   tags = {
     Name = "Team15"
   }
+
+provisioner "remote-exec" {
+    inline = [
+      "cd /home/ubuntu/",
+      "nohup python3 -m http.server 8080 &",
+    ]
+
+    connection {
+      type        = "ssh"
+      private_key = "${tls_private_key.AWS-instance.private_key_pem}"
+      user        = "ubuntu"
+      timeout     = "1m"
+    }
+  }
+}
+
+resource "aws_security_group" "example" {
+  name        = "grant ssh"
+  description = "grant ssh"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
 }
