@@ -32,7 +32,7 @@ resource "aws_instance" "AWS-instance" {
     Name = "Team15"
   }
 
-provisioner "remote-exec" {
+  provisioner "remote-exec" {
     inline = [
       "cd /home/ubuntu/",
       "nohup python3 -m http.server 8080 &",
@@ -45,16 +45,6 @@ provisioner "remote-exec" {
       timeout     = "1m"
     }
   }
-}
-
-resource "tls_private_key" "AWS-instance" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
-resource "aws_key_pair" "generated_key" {
-  key_name   = "example_key_pair"
-  public_key = "${tls_private_key.AWS-instance.public_key_openssh}"
 }
 
 resource "aws_security_group" "AWS-instance" {
@@ -81,6 +71,4 @@ resource "aws_security_group" "AWS-instance" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
-
 }
