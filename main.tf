@@ -34,6 +34,7 @@ resource "aws_instance" "AWS-instance" {
 
     provisioner "remote-exec" {
     inline = [
+      "export DEBIAN_FRONTEND=noninteractive",
       "sudo apt update",
       "sudo apt -y install python3",
       "sudo apt-get -y install python3-pip",
