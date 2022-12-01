@@ -35,13 +35,13 @@ resource "aws_instance" "AWS-instance" {
     provisioner "remote-exec" {
     inline = [
       "sudo apt update",
+      "sudo apt -y install python3",
       "sudo apt-get -y install python3-pip",
       "sudo pip3 install gunicorn",
       "sudo apt-get -y install supervisor",
       "sudo apt-get -y install nginx",
       "sudo git clone https://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@github.com/nigel-sys/Bug_Tracker.git",
       "cd Bug_Tracker",
-      "python3 -m venv env",
       "source env/Scripts/activate",
       "pip3 install -r requirements.txt",
       "cd BugRnT/",
