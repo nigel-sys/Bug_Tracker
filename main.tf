@@ -40,7 +40,7 @@ resource "aws_instance" "AWS-instance" {
       "sudo apt-get -y install supervisor",
       "sudo apt-get -y install nginx",
       "sudo pip3 -y install django",
-      "sudo git clone https://github.com/nigel-sys/Bug_Tracker.git",
+      "sudo git clone https://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@github.com/nigel-sys/Bug_Tracker.git",
       "cd Bug_Tracker/BugRnT/",
       "python3 manage.py runserver 0:8000"
     ]
