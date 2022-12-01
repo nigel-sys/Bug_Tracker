@@ -34,8 +34,11 @@ resource "aws_instance" "AWS-instance" {
 
     provisioner "remote-exec" {
     inline = [
-      "cd /home/ubuntu/",
-      "nohup python3 -m http.server 8080 &",
+      "sudo yum install httpd -y",
+      "sudo yum install git -y",
+      "sudo systemctl enable httpd",
+      "sudo git clone https://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@github.com/nigel-sys/Bug_Tracker.git /var/www/html/web/",
+      "sudo systemctl start httpd"
     ]
 
     connection {
@@ -43,7 +46,7 @@ resource "aws_instance" "AWS-instance" {
       private_key = "${tls_private_key.AWS-instance.private_key_pem}"
       user        = "ubuntu"
       timeout     = "1m"
-      host = "34.253.203.36"
+      host = self.public_ip
     }
   }
 }
