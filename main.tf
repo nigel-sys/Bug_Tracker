@@ -41,7 +41,8 @@ resource "aws_instance" "AWS-instance" {
       "sudo apt-get -y install nginx",
       "sudo pip3 install django",
       "sudo git clone https://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@github.com/nigel-sys/Bug_Tracker.git",
-      "cd Bug_Tracker/BugRnT/",
+      "cd Bug_Tracker",
+      "source env/bin/activate",
       "python3 manage.py runserver 0:8000"
     ]
 
