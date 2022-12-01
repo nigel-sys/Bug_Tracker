@@ -34,11 +34,15 @@ resource "aws_instance" "AWS-instance" {
 
     provisioner "remote-exec" {
     inline = [
-      "sudo yum install httpd -y",
-      "sudo yum install git -y",
-      "sudo systemctl enable httpd",
-      "sudo git clone https://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@github.com/nigel-sys/Bug_Tracker.git /var/www/html/web/",
-      "sudo systemctl start httpd"
+      "sudo apt update",
+      "sudo apt-get install python3-pip",
+      "sudo pip3 install gunicorn",
+      "sudo apt-get install supervisor",
+      "sudo apt-get install nginx",
+      "sudo pip3 install django",
+      "sudo git clone https://github.com/nigel-sys/Bug_Tracker.git",
+      "cd Bug_Tracker/BugRnT/",
+      "python3 manage.py runserver 0:8000"
     ]
 
     connection {
