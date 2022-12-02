@@ -33,11 +33,10 @@ resource "aws_instance" "AWS-instance" {
   }
   provisioner "remote-exec" {
     inline = [
-"source newenv/bin/activate",
 "sudo git clone https://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@github.com/nigel-sys/Bug_Tracker.git",
 "cd Bug_Tracker",
-"cd BugRnT/",
-"python3 manage.py runserver 8000"
+"systemctl start django",
+"systemctl enable django"
     ]
 
     connection {
@@ -45,7 +44,7 @@ resource "aws_instance" "AWS-instance" {
       private_key = "${tls_private_key.AWS-instance.private_key_pem}"
       user        = "ec2-user"
       timeout     = "1m"
-      host = self.public_ip
+      host = aws_instance.AWS-instance.public_ip
     }
   }
 }
