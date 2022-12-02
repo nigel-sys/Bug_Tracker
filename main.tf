@@ -51,8 +51,8 @@ resource "aws_instance" "AWS-instance" {
       type        = "ssh"
       private_key =  "${tls_private_key.AWS-instance.private_key_pem}"
       user        = "ec2-user"
-      timeout     = "2m"
-      host = aws_instance.AWS-instance.public_ip
+      timeout     = "1m"
+      host = self.public_ip
     }
   }
 }

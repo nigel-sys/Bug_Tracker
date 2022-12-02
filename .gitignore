@@ -1,4 +1,6 @@
 __pycache__/
+# Distribution / packaging
+env/
 # Local .terraform directories
 **/.terraform/*
 
