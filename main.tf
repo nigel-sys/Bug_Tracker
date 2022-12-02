@@ -24,7 +24,6 @@ resource "aws_key_pair" "generated_key" {
 }
 
 resource "aws_instance" "AWS-instance" {
-  count = 1 
   ami = "ami-001c1ab2631f48e96"
   instance_type = "t2.micro"
   key_name = aws_key_pair.generated_key.key_name
@@ -41,9 +40,9 @@ resource "aws_instance" "AWS-instance" {
 
     connection {
       type        = "ssh"
-      private_key = file("team15-dependencies")
+      private_key = file("team15_dependencies.pem")
       user        = "ec2-user"
-      timeout     = "1m"
+      timeout     = "2m"
       host = aws_instance.AWS-instance.public_ip
     }
   }
