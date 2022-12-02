@@ -33,7 +33,7 @@ resource "aws_instance" "AWS-instance" {
   }
 
   provisioner "local-exec" {
-  command = "echo ${aws_instance.AWS-instance.public_key_openssh} > ip_address.txt"
+  command = "echo ${aws_instance.AWS-instance.public_ip} > ip_address.txt"
   }
 
 }
@@ -41,7 +41,7 @@ resource "aws_instance" "AWS-instance" {
 resource "aws_eip" "ip" {
   instance = aws_instance.AWS-instance.id
   depends_on = [
-    "aws_instance.AWS-instance"
+    aws_instance.AWS-instance
   ]
 }
 
