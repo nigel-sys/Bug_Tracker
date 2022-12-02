@@ -31,11 +31,6 @@ resource "aws_instance" "AWS-instance" {
   tags = {
     Name = "Team15"
   }
-
-  provisioner "local-exec" {
-  command = "echo ${aws_instance.AWS-instance.public_ip} > ip_address.txt"
-  }
-
 }
 
 resource "aws_eip" "ip" {
