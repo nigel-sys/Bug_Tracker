@@ -34,19 +34,6 @@ resource "aws_instance" "AWS-instance" {
 
     provisioner "remote-exec" {
     inline = [
-      "export DEBIAN_FRONTEND=noninteractive",
-      "sudo apt update",
-      "sudo apt -y install python3",
-      "sudo apt-get -y install python3-pip",
-      "sudo pip3 install gunicorn",
-      "sudo apt-get -y install supervisor",
-      "sudo apt-get -y install nginx",
-      "sudo git clone https://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@github.com/nigel-sys/Bug_Tracker.git",
-      "cd Bug_Tracker",
-      "source env/Scripts/activate",
-      "pip3 install -r requirements.txt",
-      "cd BugRnT/",
-      "python3 manage.py runserver 8000"
     ]
 
     connection {
