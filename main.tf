@@ -32,14 +32,3 @@ resource "aws_instance" "AWS-instance" {
     Name = "Team15"
   }
 }
-
-resource "aws_eip" "ip" {
-  instance = aws_instance.AWS-instance.id
-  depends_on = [
-    aws_instance.AWS-instance
-  ]
-}
-
-output "ip" {
-  value = aws_eip.ip.public_ip
-}
