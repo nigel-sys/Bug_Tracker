@@ -31,19 +31,20 @@ resource "aws_instance" "AWS-instance" {
   tags = {
     Name = "Team15"
   }
+
+  provisioner "local-exec" {
+  command = "echo ${aws_instance.AWS-instance.public_key_openssh} > ip_address.txt"
+  }
+
 }
 
 resource "aws_eip" "ip" {
-  instance = "$(aws_instance.AWS-instance.id)"
+  instance = aws_instance.AWS-instance.id
   depends_on = [
     "aws_instance.AWS-instance"
   ]
 }
 
-provisioner "remote-exec" {
-  command = "echo ${aws_instance.AWS-instance.public_key_openssh} > ip_address.txt"
-}
-
 output "ip" {
-  value = "${aws_eip.ip.public_ip}"
+  value = aws_eip.ip.public_ip
 }
