@@ -24,6 +24,27 @@ resource "aws_instance" "AWS-instance" {
 }
 
 resource "aws_security_group" "AWS-instance" {
-  name        = "grant ssh"
-  description = "grant ssh"
+  name        = "team15_ssh"
+  description = "grant ssh permission"
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
