@@ -19,7 +19,7 @@ resource "tls_private_key" "AWS-instance" {
 }
 
 resource "aws_key_pair" "generated_key" {
-  key_name   = "team15"
+  key_name   = "AWS-instance_key_pair"
   public_key = "${tls_private_key.AWS-instance.public_key_openssh}"
 }
 
