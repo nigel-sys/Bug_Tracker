@@ -32,7 +32,6 @@ resource "aws_instance" "AWS-instance" {
   }
   provisioner "remote-exec"   {
     inline = [
-
     ]
 
     connection {
