@@ -20,7 +20,19 @@ resource "aws_instance" "AWS-instance" {
   tags = {
     Name = "Team15"
   }
-  
+
+  provisioner "remote-exec" {
+    inline = [
+    ]
+
+    connection {
+      type        = "ssh"
+      private_key = "${tls_private_key.AWS-instance.private_key_pem}"
+      user        = "ubuntu"
+      timeout     = "1m"
+      host = self.public_ip
+    }
+  } 
 }
 
 resource "aws_security_group" "AWS-instance" {
