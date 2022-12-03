@@ -16,7 +16,7 @@ provider "aws" {
 resource "aws_instance" "AWS-instance" {
   ami = "ami-001c1ab2631f48e96"
   instance_type = "t2.micro"
-  key_name = aws_key_pair.generated_key.key_name
+  key_name = "team15"
   tags = {
     Name = "Team15"
   }
