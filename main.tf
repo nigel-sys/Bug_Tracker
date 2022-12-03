@@ -27,7 +27,7 @@ resource "aws_instance" "AWS-instance" {
 
     connection {
       type        = "ssh"
-      private_key = "${tls_private_key.AWS-instance.private_key_pem}"
+      private_key = file("team8-devopssec-jenkins.pem")
       user        = "ubuntu"
       timeout     = "1m"
       host = self.public_ip
