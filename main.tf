@@ -20,7 +20,7 @@ resource "tls_private_key" "AWS-instance" {
 
 resource "aws_key_pair" "generated_key" {
   key_name   = "team15"
-  public_key = "${tls_private_key.example.public_key_openssh}"
+  public_key = "${tls_private_key.AWS-instance.public_key_openssh}"
 }
 
 resource "aws_instance" "AWS-instance" {
