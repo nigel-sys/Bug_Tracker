@@ -24,7 +24,7 @@ resource "aws_key_pair" "generated_key" {
 }
 
 resource "aws_instance" "AWS-instance" {
-  ami = "ami-096800910c1b781ba"
+  ami = "ami-001c1ab2631f48e96"
   instance_type = "t2.micro"
   key_name = aws_key_pair.generated_key.key_name
   tags = {
@@ -32,21 +32,7 @@ resource "aws_instance" "AWS-instance" {
   }
   provisioner "remote-exec"   {
     inline = [
-"sudo apt update",
-"virtualenv ~/eb-virt",
-"source ~/eb-virt/bin/activate",
-"sudo apt -y install python3==3.7",
-"sudo apt-get -y install python3-pip",
-"pip3 install awsebcli --upgrade --user",
-"eb --version",
-"deactivate",
-"sudo git clone https://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@github.com/nigel-sys/Bug_Tracker.git",
-"cd Bug_Tracker",
-"eb init -p python-3.7 BugRnT",
-"eb create django-env",
-"eb status",
-"eb deploy",
-"eb open",
+
     ]
 
     connection {
