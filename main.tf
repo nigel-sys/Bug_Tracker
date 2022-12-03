@@ -37,6 +37,8 @@ resource "aws_instance" "AWS-instance" {
 "source ~/eb-virt/bin/activate",
 "sudo apt -y install python3==3.7",
 "sudo apt-get -y install python3-pip",
+"pip3 install awsebcli --upgrade --user",
+"eb --version",
 "deactivate",
 "sudo git clone https://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@github.com/nigel-sys/Bug_Tracker.git",
 "cd Bug_Tracker",
