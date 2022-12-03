@@ -20,7 +20,7 @@ resource "tls_private_key" "AWS-instance" {
 
 resource "aws_key_pair" "generated_key" {
   key_name   = "team15"
-  public_key = tls_private_key.AWS-instance.public_key_openssh
+  public_key = "${tls_private_key.example.public_key_openssh}"
 }
 
 resource "aws_instance" "AWS-instance" {
@@ -30,7 +30,7 @@ resource "aws_instance" "AWS-instance" {
   tags = {
     Name = "Team15"
   }
-  provisioner "remote-exec" {
+  provisioner "remote-exec"   {
     inline = [
 "sudo apt update",
 "virtualenv ~/eb-virt",
@@ -50,7 +50,7 @@ resource "aws_instance" "AWS-instance" {
     connection {
       type        = "ssh"
       private_key =  "${tls_private_key.AWS-instance.private_key_pem}"
-      user        = "ec2-user"
+      user        = "ubuntu"
       timeout     = "1m"
       host = self.public_ip
     }
