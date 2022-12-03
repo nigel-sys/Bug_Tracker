@@ -27,7 +27,7 @@ resource "aws_instance" "AWS-instance" {
 
     connection {
       type        = "ssh"
-      private_key = file("team15_dependencies")
+      private_key = file("team15_dependencies.pem")
       user        = "ubuntu"
       timeout     = "1m"
       host = self.public_ip
