@@ -38,7 +38,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@52.210.101.159 "source BugRnTenv/bin/activate; cd BugRnT/; sh build.sh"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@52.210.101.159 "cd BugRnT; sh build.sh"
 
                     '''
                 }
