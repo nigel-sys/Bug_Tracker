@@ -58,6 +58,6 @@ resource "aws_security_group" "AWS-instance" {
 }
 
 resource "aws_eip" "AWS-instance" {
-  instance = aws_instance.web.id
+  instance = aws_instance.AWS-instance.id
   vpc      = true
 }
