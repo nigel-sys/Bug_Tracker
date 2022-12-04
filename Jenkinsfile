@@ -26,7 +26,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@54.194.99.49 "cd Bug_Tracker; sh venvsetup.sh; cd ~; source BugRnTenv/bin/activate; pip3 install -r /home/ubuntu/Bug_Tracker/requirements.txt; cd Bug_Tracker/BugRnT/; ls"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@54.194.99.49 "cd Bug_Tracker; sh venvsetup.sh; source BugRnTenv/bin/activate; pip3 install -r /home/ubuntu/Bug_Tracker/requirements.txt; cd Bug_Tracker/BugRnT/;"
 
                     '''
                 }
