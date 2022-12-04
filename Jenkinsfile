@@ -8,7 +8,7 @@ pipeline{
             }
         }
 
-        stage('Deploy App init'){
+        stage('Deploy App'){
             steps{
                 sshagent(credentials:['20deaad4-5467-4c99-94ff-6af5713db7ba']){
 
@@ -20,7 +20,7 @@ pipeline{
                 }
             }
         }
-        stage('virtual environment init'){
+        stage('Setup virtual environment'){
             steps{
                 sshagent(credentials:['20deaad4-5467-4c99-94ff-6af5713db7ba']){
 
