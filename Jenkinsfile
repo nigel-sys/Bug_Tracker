@@ -14,7 +14,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@54.194.99.49 "sudo rm -rf Bug_Tracker;git  clone https://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@github.com/nigel-sys/Bug_Tracker.git;ls"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@54.194.99.49 "sudo rm -rf Bug_Tracker;git  clone https://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@github.com/nigel-sys/Bug_Tracker.git; cd Bug_Tracker/BugRnT/; ls"
 
                     '''
                 }
