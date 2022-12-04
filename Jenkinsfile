@@ -14,7 +14,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@52.210.101.159 "sudo rm -rf Bug_Tracker;git  clone https://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@github.com/nigel-sys/Bug_Tracker.git; ls"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@34.241.2.155 "sudo rm -rf Bug_Tracker;git  clone https://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@github.com/nigel-sys/Bug_Tracker.git; ls"
 
                     '''
                 }
@@ -26,7 +26,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@52.210.101.159 "cd Bug_Tracker; sh venvsetup.sh; source BugRnTenv/bin/activate; pip3 install -r /home/ubuntu/Bug_Tracker/requirements.txt;"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@34.241.2.155 "cd Bug_Tracker; sh venvsetup.sh; source BugRnTenv/bin/activate; pip3 install -r /home/ubuntu/Bug_Tracker/requirements.txt;"
 
                     '''
                 }
@@ -38,7 +38,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@52.210.101.159 "cd Bug_Tracker/BugRnT; sh build.sh"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@34.241.2.155 "cd Bug_Tracker/BugRnT; sh build.sh"
 
                     '''
                 }
