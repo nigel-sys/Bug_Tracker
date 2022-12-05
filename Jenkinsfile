@@ -14,7 +14,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@63.35.234.55 "sudo rm -rf Bug_Tracker;git  clone https://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@github.com/nigel-sys/Bug_Tracker.git;"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@52.50.182.158 "sudo rm -rf Bug_Tracker;git  clone https://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@github.com/nigel-sys/Bug_Tracker.git;"
 
                     '''
                 }
@@ -26,7 +26,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@63.35.234.55 "cd Bug_Tracker; sh BugRnTenv.sh; source BugRnTenv/bin/activate; pip3 install -r /home/ubuntu/Bug_Tracker/requirements.txt;"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@52.50.182.158 "cd Bug_Tracker; sh BugRnTenv.sh; source BugRnTenv/bin/activate; pip3 install -r /home/ubuntu/Bug_Tracker/requirements.txt;"
 
                     '''
                 }
@@ -38,7 +38,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@63.35.234.55 "cd Bug_Tracker/BugRnT; sh makemigrations.sh"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@52.50.182.158 "cd Bug_Tracker/BugRnT; sh makemigrations.sh"
 
                     '''
                 }
@@ -50,7 +50,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@63.35.234.55 "sh restartServer.sh;"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@52.50.182.158 "sh restartServer.sh;"
 
                     '''
                 }
