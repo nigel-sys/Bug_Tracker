@@ -14,7 +14,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@3.253.98.79 "sudo rm -rf Bug_Tracker;git  clone https://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@github.com/nigel-sys/Bug_Tracker.git; ls"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@3.253.98.79 "sudo rm -rf Bug_Tracker;git  clone https://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@github.com/nigel-sys/Bug_Tracker.git;"
 
                     '''
                 }
@@ -50,7 +50,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@3.253.98.79 "sudo systemctl daemon-reload; sudo systemctl restart gunicorn; sudo systemctl restart nginx"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@3.253.98.79 "sudo systemctl daemon-reload; sudo systemctl restart gunicorn; sudo systemctl restart nginx;"
 
                     '''
                 }
