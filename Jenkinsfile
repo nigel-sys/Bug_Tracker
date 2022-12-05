@@ -50,7 +50,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@3.253.98.79 "sudo systemctl daemon-reload; sudo systemctl restart gunicorn; sudo systemctl restart nginx;"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@63.35.234.55 "sudo systemctl daemon-reload; sudo systemctl restart gunicorn; sudo systemctl restart nginx;"
 
                     '''
                 }
