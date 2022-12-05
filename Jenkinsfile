@@ -14,7 +14,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@34.241.2.155 "sudo rm -rf Bug_Tracker;git  clone https://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@github.com/nigel-sys/Bug_Tracker.git; ls"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@3.253.98.79 "sudo rm -rf Bug_Tracker;git  clone https://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@github.com/nigel-sys/Bug_Tracker.git; ls"
 
                     '''
                 }
@@ -26,7 +26,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@34.241.2.155 "cd Bug_Tracker; sh venvsetup.sh; source BugRnTenv/bin/activate; pip3 install -r /home/ubuntu/Bug_Tracker/requirements.txt;"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@3.253.98.79 "cd Bug_Tracker; sh BugRnTenv.sh; source BugRnTenv/bin/activate; pip3 install -r /home/ubuntu/Bug_Tracker/requirements.txt;"
 
                     '''
                 }
@@ -38,7 +38,19 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@34.241.2.155 "cd Bug_Tracker/BugRnT; sh build.sh"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@3.253.98.79 "cd Bug_Tracker/BugRnT; sh makemigrations.sh"
+
+                    '''
+                }
+            }
+        }
+        stage('Restart Server'){
+            steps{
+                sshagent(credentials:['20deaad4-5467-4c99-94ff-6af5713db7ba']){
+
+                    sh'''
+
+                    ssh -o StrictHostKeyChecking=no  ubuntu@3.253.98.79 "sudo systemctl daemon-reload; sudo systemctl restart gunicorn; sudo systemctl restart nginx"
 
                     '''
                 }
