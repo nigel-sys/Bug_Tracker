@@ -50,7 +50,7 @@ pipeline{
 
                     sh'''
 
-                    ssh -o StrictHostKeyChecking=no  ubuntu@52.50.182.158 "sh restartServer.sh;"
+                    ssh -o StrictHostKeyChecking=no  ubuntu@52.50.182.158 "cd; ls; sh restartServer.sh;"
 
                     '''
                 }
